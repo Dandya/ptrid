@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(Boost_USE_STATIC_LIBS OFF) 
 set(Boost_USE_MULTITHREADED ON)  
 set(Boost_USE_STATIC_RUNTIME OFF) 
-find_package(Boost COMPONENTS program_options serialization REQUIRED)
+find_package(Boost COMPONENTS program_options serialization system REQUIRED)
 
 add_executable (
   ptrid
@@ -41,6 +41,7 @@ target_link_libraries(
   pcap
   Boost::program_options 
   Boost::serialization
+  Boost::system
 )
 
 include(FetchContent)

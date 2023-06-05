@@ -11,7 +11,7 @@ namespace ptrid {
 
 struct ProcessorTraffic {
 	virtual void operator()(struct pcap_pkthdr *packet_header,
-													const u_char *packet_data) noexcept = 0;
+													const u_char *packet_data) = 0;
 };
 
 class Sniffer {
