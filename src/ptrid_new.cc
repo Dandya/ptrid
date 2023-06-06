@@ -23,11 +23,6 @@
 
 #define TCP_PROTOCOL 6
 #define ETHERNET_IPV4 0x0008
-
-// #define MARKOV_CHAIN
-#define INFO_DISTANCE
-// #define CHISQ
-
 #define TIME_WAIT 600
 #define TIME_AFTER_END 10
 
@@ -330,13 +325,11 @@ int main(int argc, char** argv) {
 				vm["types"].as<std::vector<std::string>>().size() == 0) 
 			throw std::logic_error("");
 
-		std::cout << vm["types"].as<std::vector<std::string>>().size() << std::endl;
 		for(auto str_path : vm["types"].as<std::vector<std::string>>()) {
 			if (!std::filesystem::is_directory(
 					std::filesystem::path(str_path)))
 				throw std::runtime_error(str_path +
 																" - doesn't directory.");
-			std::cout << str_path << std::endl;
 		}
 
 		ptrid::ReaderBytes reader(2);

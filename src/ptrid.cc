@@ -1,14 +1,14 @@
+#include <iostream>
+#include <vector>
+
 #include "ptrid_lib/readers.h"
 #include "ptrid_lib/probabilistic_scheme.h"
 #include "ptrid_lib/markov_chain.h"
 #include "ptrid_lib/math_func.h"
 
-#include <iostream>
-#include <vector>
-
-// #define MARKOV_CHAIN
+#define MARKOV_CHAIN
 // #define CHISQ
-#define INFO_DISTANCE
+// #define INFO_DISTANCE
 
 #if defined(MARKOV_CHAIN)
 

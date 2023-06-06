@@ -1,3 +1,5 @@
+#pragma one
+
 #include <assert.h>
 #include <pcap.h>
 #include <stdint.h>

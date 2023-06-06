@@ -20,6 +20,6 @@ long double GetChi2(const ProbabilisticScheme &scheme_test,
 
 long double GetEntropy(const ProbabilisticScheme &PS);
 
-long double getEntropyOfMarkovChain(const MarkovChain &MC);
+long double GetEntropy(const MarkovChain &MC);
 
 }

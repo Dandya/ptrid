@@ -16,10 +16,7 @@
 
 namespace ptrid {
 
-// Abstract class
 class ReaderBytes {
-	friend class boost::serialization::access;
-
  protected:
 	int8_t deep_ = 0;
 	std::vector<uint32_t> frequencies_;
@@ -41,9 +38,6 @@ class ReaderBytes {
 	void ReadData(const std::string &name_file, std::vector<uint32_t> &frequencies);
 
  public:
-
-	static int32_t CheckTypeOfFile(const std::string &name_file);
-	
 	ReaderBytes(const int8_t deep) {
 		assert((deep == 1 || deep == 2) && "ptrid::ReaderBytes: Unsupported deep.");
 		deep_ = deep;
@@ -71,6 +65,8 @@ class ReaderBytes {
 		this->frequencies_ = std::move(other.frequencies_);
 		return *this;
 	}
+
+	static int32_t CheckTypeOfFile(const std::string &name_file);
 
 	void Read(const std::string &name_source);
 
@@ -100,7 +96,6 @@ class ReaderBytes {
 	void Clean() {
 		for (size_t i = 0; i < frequencies_.size(); i++) frequencies_[i] = 0;
 	}
-
 };
 
 }	 // namespace ptrid

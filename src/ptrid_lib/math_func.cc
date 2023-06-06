@@ -68,20 +68,18 @@ long double GetEntropy(const ProbabilisticScheme &PS) {
 					continue;
 			}
 		} else if (PS.GetDeep() == 2) {
-			for (int i = 0; i < 256; i++) {
-				for (int j = 0; j < 256; j++) {
+			for (int i = 0; i < 256; i++)
+				for (int j = 0; j < 256; j++)
 					if (PS.GetProbability(i, j) > 0)
 						entropy += PS.GetProbability(i, j) * log2l(PS.GetProbability(i, j));
 					else
 						continue;
-				}
-			}
 		}
 
 		return entropy * -1.;
 	}
 
-long double getEntropyOfMarkovChain(const MarkovChain &MC) {
+long double GetEntropy(const MarkovChain &MC) {
 		long double entropy = 0.;
 		for (int i = 0; i < MC.GetSizeSet(); i++) {
 			long double condition_entropy = 0.;

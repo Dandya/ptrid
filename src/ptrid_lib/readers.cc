@@ -153,4 +153,5 @@ void ReaderBytes::ReadData(const std::string &name_file, std::vector<uint32_t> &
 	f_in.close();
 	return;
 }
+
 }	 // namespace ptrid

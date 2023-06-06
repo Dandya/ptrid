@@ -1,8 +1,6 @@
 ﻿cmake_minimum_required (VERSION 3.12)
 project (ptrid CXX)
 
-#set( CMAKE_VERBOSE_MAKEFILE on )
-
 set(CMAKE_CXX_STANDARD 20)
 set(Boost_USE_STATIC_LIBS OFF) 
 set(Boost_USE_MULTITHREADED ON)  
