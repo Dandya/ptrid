@@ -6,9 +6,9 @@
 #include <iostream>
 #include <vector>
 
-#define MARKOV_CHAIN
+// #define MARKOV_CHAIN
 // #define CHISQ
-// #define INFO_DISTANCE
+#define INFO_DISTANCE
 
 #if defined(MARKOV_CHAIN)
 
@@ -78,8 +78,8 @@ void PrintType(std::string& name_path, char** paths_to_types, int count_types) {
 	ptrid::ReaderBytes reader(2);
 	reader.Read(name_path);
 	ptrid::ProbabilisticScheme scheme_file(2, 256, reader.GetFrequencies());
-	//scheme_file.useAdditiveSmoothing(1000); In practice, the number of successes 
-	//                                         is higher in the absence of smoothing
+	scheme_file.useAdditiveSmoothing(1000); 
+	
 	for (size_t i = 0; i < count_types; i++) {
 		reader.Clean();
 		reader.Read(paths_to_types[i]);

@@ -18,16 +18,16 @@ long double GetInfoDistance(const ProbabilisticScheme &scheme_numerator,
 			if (scheme_numerator.GetProbability(i) > 0 &&
 					scheme_denominator.GetProbability(i) > 0)
 				info_distance += scheme_numerator.GetProbability(i) *
-												 (log2l(scheme_numerator.GetProbability(i)) -
-													log2l(scheme_denominator.GetProbability(i)));
+												 (log2l(scheme_numerator.GetProbability(i) /
+												 				scheme_denominator.GetProbability(i)));
 	} else if (scheme_numerator.GetDeep() == 2) {
 		for (size_t i = 0; i < scheme_numerator.GetSizeSet(); i++)
 			for (size_t j = 0; j < scheme_numerator.GetSizeSet(); j++)
 				if (scheme_numerator.GetProbability(i, j) > 0 &&
 						scheme_denominator.GetProbability(i, j) > 0)
 					info_distance += scheme_numerator.GetProbability(i, j) *
-													 (log2l(scheme_numerator.GetProbability(i, j)) -
-														log2l(scheme_denominator.GetProbability(i, j)));
+													 (log2l(scheme_numerator.GetProbability(i, j) /
+																	scheme_denominator.GetProbability(i, j)));
 	}
 	return info_distance;
 }
@@ -42,14 +42,14 @@ long double GetChi2(const ProbabilisticScheme &scheme_test,
 	long double xi2 = 0.;
 	if (scheme_test.GetDeep() == 1) {
 		for (size_t i = 0; i < scheme_test.GetSizeSet(); i++)
-			if (scheme_theory.GetNumerator(i) >= 1e-10)
+			if (scheme_theory.GetNumerator(i) > 0)
 				xi2 += powl(scheme_test.GetNumerator(i) - scheme_theory.GetNumerator(i),
 										2) /
 							 scheme_theory.GetNumerator(i);
 	} else if (scheme_test.GetDeep() == 2) {
 		for (size_t i = 0; i < scheme_test.GetSizeSet(); i++)
 			for (size_t j = 0; j < scheme_test.GetSizeSet(); j++)
-				if (scheme_theory.GetNumerator(i, j) >= 1e-20)
+				if (scheme_theory.GetNumerator(i, j) > 0)
 					xi2 += powl(scheme_test.GetNumerator(i, j) -
 													scheme_theory.GetNumerator(i, j),
 											2) /
